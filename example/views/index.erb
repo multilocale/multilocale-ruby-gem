@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= t("app.title") %></title>
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        margin: 0 auto; padding: 3rem 1.25rem; max-width: 42rem; line-height: 1.6;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+      nav { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+      nav a { padding: 0.2rem 0.6rem; border: 1px solid currentColor; border-radius: 0.4rem;
+              text-decoration: none; opacity: 0.7; }
+      nav a[aria-current="page"] { opacity: 1; font-weight: 600; }
+      ol { padding-left: 1.2rem; }
+      .count { font-variant-numeric: tabular-nums; opacity: 0.8; }
+      footer { margin-top: 3rem; font-size: 0.85rem; opacity: 0.7; }
+    </style>
+  </head>
+  <body>
+    <nav aria-label="<%= t("nav.language") %>">
+      <% I18n.available_locales.each do |available| %>
+        <a href="/<%= available %>/" <%= %(aria-current="page") if available == locale %>><%= available %></a>
+      <% end %>
+    </nav>
+
+    <h1><%= t("app.title") %></h1>
+    <p><%= t("app.tagline") %></p>
+
+    <p><strong><%= t("greeting", name: "Ada") %></strong></p>
+    <p><%= t("locale.current") %></p>
+    <p class="count"><%= t("phrases", count: phrase_count) %></p>
+
+    <h2><%= t("workflow.title") %></h2>
+    <ol>
+      <li><%= t("workflow.pull") %></li>
+      <li><%= t("workflow.render") %></li>
+    </ol>
+
+    <footer>
+      <a href="https://www.multilocale.com/developers/"><%= t("footer.docs") %></a>
+      &middot; multilocale <%= gem_version %>
+    </footer>
+  </body>
+</html>

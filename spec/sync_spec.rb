@@ -1,0 +1,142 @@
+# frozen_string_literal: true
+
+require "spec_helper"
+require "tmpdir"
+
+RSpec.describe Multilocale::Sync do
+  let(:project_document) do
+    {
+      "_id" => "6a1f9c2b4d8e70135f2ab901",
+      "name" => "multilocale-ruby-example",
+      "defaultLocale" => "en",
+      "locales" => %w[en es fr it]
+    }
+  end
+
+  def serve_project_and_phrases(rows = fixture_phrases)
+    stub_api.on(:get, "/api/projects/multilocale-ruby-example") { [200, project_document] }
+    stub_api.on(:get, "/api/phrases") { [200, rows] }
+  end
+
+  describe "#pull" do
+    it "writes one file per language and reports what it did" do
+      serve_project_and_phrases
+
+      Dir.mktmpdir do |directory|
+        result = described_class.new(
+          client: client,
+          project: "multilocale-ruby-example",
+          paths: ["config/locales/%lang%.yml"],
+          base_dir: directory
+        ).pull
+
+        expect(result.phrases).to eq(44)
+        expect(result.languages).to eq(%w[en es fr it])
+        expect(result.files.map { |file| File.basename(file) }).to eq(%w[en.yml es.yml fr.yml it.yml])
+        expect(YAML.safe_load_file(File.join(directory, "config/locales/fr.yml"))["fr"]["nav"]["language"])
+          .to eq("Langue")
+      end
+    end
+
+    it "filters the download by project name, which is what the API matches on" do
+      serve_project_and_phrases
+
+      Dir.mktmpdir do |directory|
+        described_class.new(client: client, project: "multilocale-ruby-example",
+                            paths: ["%lang%.yml"], base_dir: directory).pull
+      end
+
+      phrases_request = stub_api.requests.find { |request| request.path == "/api/phrases" }
+      expect(phrases_request.param("project")).to eq("multilocale-ruby-example")
+    end
+
+    it "leaves a declared-but-empty locale alone rather than writing an empty file" do
+      serve_project_and_phrases(fixture_phrases.reject { |row| row["language"] == "it" })
+
+      Dir.mktmpdir do |directory|
+        result = described_class.new(client: client, project: "multilocale-ruby-example",
+                                     paths: ["%lang%.yml"], base_dir: directory).pull
+
+        expect(result.empty_locales).to eq(["it"])
+        expect(File.exist?(File.join(directory, "it.yml"))).to be(false)
+      end
+    end
+
+    it "can restrict itself to some languages" do
+      serve_project_and_phrases
+
+      Dir.mktmpdir do |directory|
+        result = described_class.new(client: client, project: "multilocale-ruby-example",
+                                     paths: ["%lang%.yml"], base_dir: directory).pull(languages: %w[es])
+
+        expect(result.files.size).to eq(1)
+      end
+    end
+
+    it "says which projects exist when the configured one does not" do
+      stub_api.on(:get, "/api/projects/typo") { [404, { "message" => "not found" }] }
+
+      expect do
+        described_class.new(client: client, project: "typo", paths: ["%lang%.yml"]).pull
+      end.to raise_error(Multilocale::NotFoundError, /multilocale-ruby projects/)
+    end
+
+    it "refuses to guess the project" do
+      expect { described_class.new(client: client, paths: ["%lang%.yml"]).pull }
+        .to raise_error(Multilocale::ConfigurationError, /projectId/)
+    end
+
+    it "refuses to guess the output paths" do
+      expect { described_class.new(client: client, project: "website").pull }
+        .to raise_error(Multilocale::ConfigurationError, /paths/)
+    end
+  end
+
+  describe "#push" do
+    it "sends every local key back with the project attached" do
+      serve_project_and_phrases
+      stub_api.on(:post, "/api/phrases") { |request| [200, request.json] }
+
+      Dir.mktmpdir do |directory|
+        sync = described_class.new(client: client, project: "multilocale-ruby-example",
+                                   paths: ["%lang%.yml"], base_dir: directory)
+        sync.pull
+        sync.push(languages: %w[es])
+      end
+
+      posted = stub_api.requests.select { |request| request.method == "POST" }.flat_map { |request| request.json }
+      expect(posted.size).to eq(11)
+      expect(posted.map { |row| row["language"] }.uniq).to eq(["es"])
+      expect(posted.map { |row| row["projects"] }.uniq).to eq([["multilocale-ruby-example"]])
+      expect(posted.map { |row| row["key"] }).to include("nav.language", "phrases.other")
+    end
+  end
+
+  describe "the locale files committed under example/" do
+    # The example application ships translations so a clone runs offline. They
+    # are only trustworthy if they are exactly what a pull produces, so this
+    # regenerates them from the fixture and compares byte for byte.
+    it "are byte-identical to what a pull writes" do
+      serve_project_and_phrases
+
+      Dir.mktmpdir do |directory|
+        described_class.new(
+          client: client,
+          project: "multilocale-ruby-example",
+          paths: ["example/config/locales/%lang%.yml"],
+          header: "Generated by `multilocale-ruby pull`. Edit the phrases on multilocale.com, not here.",
+          base_dir: directory
+        ).pull
+
+        %w[en es fr it].each do |language|
+          generated = File.join(directory, "example/config/locales/#{language}.yml")
+          committed = File.join(GEM_ROOT, "example/config/locales/#{language}.yml")
+
+          expect(File.read(generated)).to eq(File.read(committed)),
+                                          "example/config/locales/#{language}.yml is stale — " \
+                                          "re-run `multilocale-ruby pull` in example/"
+        end
+      end
+    end
+  end
+end

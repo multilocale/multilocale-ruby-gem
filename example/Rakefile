@@ -1,0 +1,36 @@
+# frozen_string_literal: true
+
+# The task a Rails application would put in lib/tasks/multilocale.rake.
+# `rake multilocale:pull` is the whole integration: it reads multilocale.json,
+# downloads the phrases and rewrites config/locales/*.yml. Commit the result.
+#
+#   MULTILOCALE_API_KEY=… bundle exec rake multilocale:pull
+
+require "multilocale"
+
+namespace :multilocale do
+  desc "Download the project's phrases into config/locales"
+  task :pull do
+    config = Multilocale::ConfigFile.discover(__dir__)
+    abort("No multilocale.json found above #{__dir__}") if config.nil?
+
+    result = Multilocale::Sync.new(client: Multilocale.client, config: config).pull
+
+    puts "#{result.project.name}: #{result.phrases} phrases in #{result.languages.size} languages"
+    result.files.each { |file| puts "  #{file}" }
+    unless result.empty_locales.empty?
+      puts "  no phrases yet for: #{result.empty_locales.join(', ')}"
+    end
+  end
+
+  desc "Upload config/locales back to the project (overwrites remote values)"
+  task :push do
+    config = Multilocale::ConfigFile.discover(__dir__)
+    abort("No multilocale.json found above #{__dir__}") if config.nil?
+
+    rows = Multilocale::Sync.new(client: Multilocale.client, config: config).push
+    puts "pushed #{rows.size} phrases"
+  end
+end
+
+task default: "multilocale:pull"

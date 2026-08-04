@@ -1,0 +1,727 @@
+[
+  {
+    "_id": "000100000000000000000001",
+    "key": "app.title",
+    "value": "Multilocale Ruby example",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "000100000000000000000002",
+    "key": "app.tagline",
+    "value": "Every string on this page comes from a locale file this gem wrote.",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "000100000000000000000003",
+    "key": "nav.language",
+    "value": "Language",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "000100000000000000000004",
+    "key": "greeting",
+    "value": "Hello, %{name}!",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "000100000000000000000005",
+    "key": "locale.current",
+    "value": "You are reading this page in English.",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "000100000000000000000006",
+    "key": "phrases.one",
+    "value": "%{count} phrase in this dictionary",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "000100000000000000000007",
+    "key": "phrases.other",
+    "value": "%{count} phrases in this dictionary",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "000100000000000000000008",
+    "key": "workflow.title",
+    "value": "How this page gets its words",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "000100000000000000000009",
+    "key": "workflow.pull",
+    "value": "multilocale-ruby pull downloads the phrases into config/locales",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "00010000000000000000000a",
+    "key": "workflow.render",
+    "value": "The i18n gem renders them, with no network call while serving the page",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "00010000000000000000000b",
+    "key": "footer.docs",
+    "value": "Documentation",
+    "language": "en",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z"
+  },
+  {
+    "_id": "00010000000000000000000c",
+    "key": "app.title",
+    "value": "Ejemplo de Multilocale para Ruby",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000000d",
+    "key": "app.tagline",
+    "value": "Cada texto de esta página proviene de un archivo de idioma que escribió esta gema.",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000000e",
+    "key": "nav.language",
+    "value": "Idioma",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000000f",
+    "key": "greeting",
+    "value": "¡Hola, %{name}!",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000010",
+    "key": "locale.current",
+    "value": "Estás leyendo esta página en español.",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000011",
+    "key": "phrases.one",
+    "value": "%{count} frase en este diccionario",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000012",
+    "key": "phrases.other",
+    "value": "%{count} frases en este diccionario",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000013",
+    "key": "workflow.title",
+    "value": "Cómo obtiene sus palabras esta página",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000014",
+    "key": "workflow.pull",
+    "value": "multilocale-ruby pull descarga las frases en config/locales",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000015",
+    "key": "workflow.render",
+    "value": "La gema i18n las muestra, sin ninguna llamada de red al servir la página",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000016",
+    "key": "footer.docs",
+    "value": "Documentación",
+    "language": "es",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000017",
+    "key": "app.title",
+    "value": "Exemple Multilocale pour Ruby",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000018",
+    "key": "app.tagline",
+    "value": "Chaque texte de cette page provient d'un fichier de langue écrit par cette gem.",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000019",
+    "key": "nav.language",
+    "value": "Langue",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000001a",
+    "key": "greeting",
+    "value": "Bonjour, %{name} !",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000001b",
+    "key": "locale.current",
+    "value": "Vous lisez cette page en français.",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000001c",
+    "key": "phrases.one",
+    "value": "%{count} phrase dans ce dictionnaire",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000001d",
+    "key": "phrases.other",
+    "value": "%{count} phrases dans ce dictionnaire",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000001e",
+    "key": "workflow.title",
+    "value": "Comment cette page obtient ses mots",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000001f",
+    "key": "workflow.pull",
+    "value": "multilocale-ruby pull télécharge les phrases dans config/locales",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000020",
+    "key": "workflow.render",
+    "value": "La gem i18n les affiche, sans aucun appel réseau pendant la requête",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000021",
+    "key": "footer.docs",
+    "value": "Documentation",
+    "language": "fr",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "googleTranslate": true
+  },
+  {
+    "_id": "000100000000000000000022",
+    "key": "app.title",
+    "value": "Esempio Multilocale per Ruby",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000023",
+    "key": "app.tagline",
+    "value": "Ogni testo di questa pagina proviene da un file di lingua scritto da questa gem.",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000024",
+    "key": "nav.language",
+    "value": "Lingua",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000025",
+    "key": "greeting",
+    "value": "Ciao, %{name}!",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000026",
+    "key": "locale.current",
+    "value": "Stai leggendo questa pagina in italiano.",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000027",
+    "key": "phrases.one",
+    "value": "%{count} frase in questo dizionario",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000028",
+    "key": "phrases.other",
+    "value": "%{count} frasi in questo dizionario",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "000100000000000000000029",
+    "key": "workflow.title",
+    "value": "Come questa pagina ottiene le sue parole",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000002a",
+    "key": "workflow.pull",
+    "value": "multilocale-ruby pull scarica le frasi in config/locales",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000002b",
+    "key": "workflow.render",
+    "value": "La gem i18n le mostra, senza nessuna chiamata di rete durante la richiesta",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  },
+  {
+    "_id": "00010000000000000000002c",
+    "key": "footer.docs",
+    "value": "Documentazione",
+    "language": "it",
+    "projects": [
+      "multilocale-ruby-example"
+    ],
+    "projectsIds": [
+      "6a1f9c2b4d8e70135f2ab901"
+    ],
+    "organizationId": "b2c4d6e8f0a1c3e5d7b9f102",
+    "creationTime": "2026-08-04T09:00:00.000Z",
+    "lastEditTime": "2026-08-04T09:00:00.000Z",
+    "machineTranslated": true,
+    "model": "claude-sonnet-4-5"
+  }
+]

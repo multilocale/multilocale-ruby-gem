@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: specs (ruby ${{ matrix.ruby }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ["3.2", "3.3", "3.4", "4.0"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Syntax check and specs
+        run: bundle exec rake
+      - name: Build the gem
+        run: gem build multilocale.gemspec
+
+  example:
+    name: example application renders four locales
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+
+      # Deliberately no setup step: the job installs the checkout exactly as it
+      # was cloned. This used to write a gitignored Gemfile.local pointing the
+      # example at the workspace, which meant CI passed while a real
+      # `git clone && cd example && bundle install` failed — the example named
+      # a gem version that has never been pushed to RubyGems. example/Gemfile
+      # now resolves it from `path: ".."`, so this job proves the clone works.
+      - name: Install
+        working-directory: example
+        run: bundle install --jobs 4
+
+      - name: Boot
+        working-directory: example
+        run: |
+          bundle exec ruby app.rb &
+          for attempt in $(seq 1 30); do
+            curl --silent --fail http://127.0.0.1:4567/en/ > /dev/null && break
+            sleep 1
+          done
+
+      - name: Every locale renders its own translation
+        run: |
+          set -euo pipefail
+          curl --silent --fail http://127.0.0.1:4567/en/ | grep -q "You are reading this page in English."
+          curl --silent --fail http://127.0.0.1:4567/es/ | grep -q "Estás leyendo esta página en español."
+          curl --silent --fail http://127.0.0.1:4567/fr/ | grep -q "Vous lisez cette page en français."
+          curl --silent --fail http://127.0.0.1:4567/it/ | grep -q "Stai leggendo questa pagina in italiano."
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:4567/de/)" = 404
+          echo "four locales rendered"

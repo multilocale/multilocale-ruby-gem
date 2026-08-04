@@ -1,0 +1,25 @@
+# Build output
+pkg/
+*.gem
+
+# Bundler. Patterns are deliberately unanchored: `vendor/bundle/` would only
+# match at this directory's root, leaving example/vendor/bundle/ tracked — and
+# a vendored gem tree is 900 files nobody should review.
+.bundle/
+vendor/
+
+# Lockfiles are deliberately not committed.
+#
+# A gem resolves against whatever its consumers already have, so a lockfile
+# here would only describe one machine. More importantly, the development
+# override (a gitignored Gemfile.local pointing the published gem at this
+# working copy) writes a PATH section with a local absolute path into
+# Gemfile.lock — committing it would publish that path and break every clone.
+Gemfile.lock
+
+# Development override: replaces the published `multilocale` gem with this
+# working copy. Gitignored on purpose — the public repository must always
+# resolve the gem from RubyGems.
+Gemfile.local
+
+.DS_Store

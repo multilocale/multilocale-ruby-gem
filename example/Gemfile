@@ -1,0 +1,36 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+# The gem in the directory above, which is this repository's whole point. The
+# version requirement is the one a reader outside this repository puts in their
+# own Gemfile; `path:` is what makes `git clone && bundle install` work here.
+# Bundler checks the local gemspec against the requirement, so the two cannot
+# drift apart silently.
+#
+# It must be `path:` and not a bare `gem "multilocale", "~> 0.1"`: this is the
+# gem's own repository, so the example has to demonstrate the code committed
+# beside it rather than the last release — and until the first `gem push` there
+# is no release at all, which made a fresh clone fail to install outright.
+#
+# A gitignored Gemfile.local beside this file replaces the line, e.g. to run
+# the example against a real RubyGems release instead:
+#
+#   echo 'gem "multilocale", "~> 0.1"' > Gemfile.local && bundle install
+#
+# Bundler refuses to see the same gem declared twice, so the override replaces
+# this line rather than adding to it. Nothing else in the file changes, and the
+# override can never reach the public repository — see AGENTS.md.
+override = File.expand_path("Gemfile.local", __dir__)
+
+if File.exist?(override)
+  eval_gemfile(override)
+else
+  gem "multilocale", "~> 0.1", path: ".."
+end
+
+gem "i18n", "~> 1.15"
+gem "puma", "~> 8.0"
+gem "rake", "~> 13.3"
+gem "rackup", "~> 2.3"
+gem "sinatra", "~> 4.2"
