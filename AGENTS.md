@@ -123,24 +123,51 @@ lockfile — another reason both stay gitignored.
 ## Traps in the npm CLI this gem deliberately does not copy
 
 Relevant when a repository uses both tools, or when you are tempted to make the
-two behave identically:
+two behave identically. Verified against `multilocale` **1.2.2**, which is the
+oldest npm CLI worth pairing with this gem:
 
-- `multilocale import` and `unused` read `paths` from the **project** and
-  destructure it undefended, throwing `Cannot read properties of undefined` when
-  it is unset. `ConfigFile#paths` returns `[]`, and `paths!` explains what to add.
 - `download` resolves `project.paths || config.paths`: a value set server-side
   wins over the local `multilocale.json`. This gem only ever uses the local one.
+  Since the API started giving every new account a real first project, that
+  server value is no longer usually absent — a bootstrap project carries
+  `paths: ["translations/%lang%.json"]`, so `npx multilocale download` against
+  it ignores this repository's `example/config/locales/%lang%.yml` entirely.
 - `download` injects a `"locale": "<lang>"` entry into every generated file.
   This gem does not — in a Rails locale file that entry *is* a translation.
-- `import` accepts flat JSON only; nested objects are stored as objects and
-  machine-translated into garbage, spending credits.
-- `unused` greps `.js/.jsx/.ts/.tsx/.cjs/.mjs` only, so it reports every Ruby
-  key as unused. Do not wire it into CI here.
+- A phrase is a flat key/value pair. On npm CLI 1.2.2 `import` uploads a nested
+  object verbatim — stored as an object, then machine-translated into garbage,
+  spending credits; newer builds flatten nesting into dot paths instead (check
+  `npx multilocale import --help` for `--no-flatten`). `Dictionary` here does
+  its own flattening in both directions, which is why a Rails `.yml` round-trips.
+- `import` is not idempotent: every run mints a fresh `_id` per phrase and
+  `POST /api/phrases` upserts by `_id`, so a second `import` duplicates every
+  key/locale rather than merging.
+- **`import`, `unused` and `localize` do not run in a Ruby repository at all.**
+  They first classify the working directory as Android (an `AndroidManifest.xml`
+  below it) or JavaScript (any `package.json` below it); this directory is
+  neither, so all three exit with `Could not detect project type` and a reminder
+  that Android needs an `AndroidManifest.xml` and JavaScript a `package.json`.
+  `download` skips that check, which is why it is the one npm command that does
+  something here — and it writes JSON into `.yml` filenames, which is the whole
+  reason for `multilocale-ruby pull`. Even where `unused` does run it greps only
+  `.js/.jsx/.ts/.tsx/.cjs/.mjs` for usages and never opens a `.rb` or `.erb`
+  file, so every Ruby key would come back unused. Do not wire it into CI here.
 - The CLI's format whitelist is `cjs`, `esm`, `json`, `js`, `swift` — **there is
   no YAML writer**, which is the whole reason this gem exists. `LocaleFile`
   supports `yaml` and `json`, inferred from the path extension. Keep `format`
   out of `multilocale.json` unless it is one they both understand: `npx
   multilocale download` raises `Invalid format: yaml`.
+- Fixed in npm CLI 1.2.2, and listed only because an older build's error
+  messages look like bugs in this gem. `import`/`unused` threw
+  `Cannot read properties of undefined (reading 'forEach')` when the project had
+  no `paths` — they now fall back to `multilocale.json`, then
+  `translations/%lang%.json`; `ConfigFile#paths` returns `[]` and `paths!`
+  explains what to add, which is the gem's equivalent. `import` threw
+  `uuid2 is not a function` on the first phrase, so it had never worked in a
+  published build. `download` threw
+  `Cannot convert undefined or null to object` for a locale with no phrases.
+  And project selection hung on an interactive picker with no TTY instead of
+  failing fast.
 
 ## Config in this repository
 
